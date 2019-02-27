@@ -1,0 +1,36 @@
+# ===============================
+# = HTTP/HTTPS
+# ===============================
+server:
+  port: 8083
+  servlet:
+    context-path: /demo
+
+
+# ===============================
+# = SPRING CONFIG
+# ===============================
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    cache: false
+
+# ===============================
+# = MYBATIS
+# ===============================
+mybatis:
+#  typeAliasesPackage: cn.ningxy.*.*.*.po
+#  mapperLocations: classpath:mapper/**/*mapper.xml
+  mapperLocations: classpath:mapper/**/*Mapper.xml
+  configuration:
+    default-statement-timeout: 20
+    map-underscore-to-camel-case: true
+
+securityDefinitions:
+  APIKey:
+    type: apiKey
+    name: Authorization
+    in: header
+security:
+- APIKey: []
